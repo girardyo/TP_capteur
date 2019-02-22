@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     Camera camera;
     Camera.Parameters fparams;
     Boolean shake=false;
+    Boolean i = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,8 +184,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
             else {
-                sensorManager3.registerListener(proximitySensorListener, prox, SensorManager.SENSOR_DELAY_NORMAL);
+                //probleme de if 
+                if (i == false){
+                    sensorManager3.registerListener(proximitySensorListener, prox, SensorManager.SENSOR_DELAY_NORMAL);
+                    i = true;
+                }
+                else{
+                    sensorManager3.registerListener(proximitySensorListener, prox, SensorManager.SENSOR_DELAY_NORMAL);
+                }
             }
+
 
             proximitySensorListener = new SensorEventListener(){
 
